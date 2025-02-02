@@ -1,7 +1,7 @@
 // ==UserScript==
 // @author       MycRub @ HFR
 // @name         [HFR] Résumé quotidien par topic
-// @description  Utilise une API pour générer le résumé d'une journée pour vos topics préférés.
+// @description  Génère et affiche le résumé d'une journée sur vos topics préférés
 // @icon         https://forum.hardware.fr/favicon.ico
 // @namespace    https://mycrub.net
 // @version      0.1
