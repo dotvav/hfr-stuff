@@ -18,6 +18,8 @@
 (function() {
     'use strict';
 
+    const DEVO_MODE = false;
+
     const API_ENDPOINTS = {
         prod: 'https://ikbk2nrikg.execute-api.eu-west-3.amazonaws.com/prod/summarize',
         devo: 'https://ivc6ivtvmg.execute-api.eu-west-3.amazonaws.com/devo/summarize'
@@ -26,12 +28,14 @@
     // Get current endpoint from storage or default to prod
     let currentEndpoint = GM_getValue('summaryEndpoint', 'prod');
 
-    // Register menu command to toggle endpoint
-    GM_registerMenuCommand('Changer l\'environnement (actuel: ' + currentEndpoint + ')', () => {
-        currentEndpoint = currentEndpoint === 'prod' ? 'devo' : 'prod';
-        GM_setValue('summaryEndpoint', currentEndpoint);
-        alert('Environnement changé pour: ' + currentEndpoint + '\n\nL\'environnement est changé mais le menu ne sera mis à jour qu\'au prochain chargement de la page.');
-    });
+    if(DEVO_MODE) {
+        // Register menu command to toggle endpoint
+        GM_registerMenuCommand('Changer l\'environnement (actuel: ' + currentEndpoint + ')', () => {
+            currentEndpoint = currentEndpoint === 'prod' ? 'devo' : 'prod';
+            GM_setValue('summaryEndpoint', currentEndpoint);
+            alert('Environnement changé pour: ' + currentEndpoint + '\n\nL\'environnement est changé mais le menu ne sera mis à jour qu\'au prochain chargement de la page.');
+        });
+    }
 
     function getCurrentApiUrl() {
         return API_ENDPOINTS[currentEndpoint];
