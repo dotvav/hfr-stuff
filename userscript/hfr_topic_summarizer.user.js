@@ -30,7 +30,7 @@
     GM_registerMenuCommand('Changer l\'environnement (actuel: ' + currentEndpoint + ')', () => {
         currentEndpoint = currentEndpoint === 'prod' ? 'devo' : 'prod';
         GM_setValue('summaryEndpoint', currentEndpoint);
-        alert('Environnement changé pour: ' + currentEndpoint);
+        alert('Environnement changé pour: ' + currentEndpoint + '\n\nL\'environnement est changé mais le menu ne sera mis à jour qu\'au prochain chargement de la page.');
     });
 
     function getCurrentApiUrl() {
