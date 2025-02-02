@@ -7,6 +7,9 @@
 // @version      0.1
 // @match        https://forum.hardware.fr/forum2.php*
 // @grant        GM_addStyle
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_registerMenuCommand
 // ==/UserScript==
 
 // Historique
