@@ -317,7 +317,7 @@
                 date: date
             });
             
-            const url = `${getCurrentApiUrl()}?${params.toString()}``;
+            const url = `${getCurrentApiUrl()}?${params.toString()}`;
             const response = await fetch(url);
             const data = await response.json();
 
