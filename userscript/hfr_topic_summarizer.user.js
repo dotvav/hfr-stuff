@@ -15,6 +15,25 @@
 (function() {
     'use strict';
 
+    const API_ENDPOINTS = {
+        prod: 'https://ikbk2nrikg.execute-api.eu-west-3.amazonaws.com/prod/summarize',
+        devo: 'https://ivc6ivtvmg.execute-api.eu-west-3.amazonaws.com/devo/summarize'
+    };
+
+    // Get current endpoint from storage or default to prod
+    let currentEndpoint = GM_getValue('summaryEndpoint', 'prod');
+
+    // Register menu command to toggle endpoint
+    GM_registerMenuCommand('Changer l\'environnement (actuel: ' + currentEndpoint + ')', () => {
+        currentEndpoint = currentEndpoint === 'prod' ? 'devo' : 'prod';
+        GM_setValue('summaryEndpoint', currentEndpoint);
+        alert('Environnement changé pour: ' + currentEndpoint);
+    });
+
+    function getCurrentApiUrl() {
+        return API_ENDPOINTS[currentEndpoint];
+    }
+
     let currentPollController = null;  // To track and cancel current polling
 
     GM_addStyle(`
@@ -91,7 +110,6 @@
             min-height: 100px;
         }
     `);
-    
     
     const SummaryCache = {
         KEY_PREFIX: 'hfr_summary_',
@@ -183,7 +201,7 @@
                 date: date
             });
             
-            const url = `https://ivc6ivtvmg.execute-api.eu-west-3.amazonaws.com/devo/summarize?${params.toString()}`;
+            const url = `${getCurrentApiUrl()}?${params.toString()}?${params.toString()}`;
             const response = await fetch(url);
             const data = await response.json();
 
@@ -299,7 +317,7 @@
                 date: date
             });
             
-            const url = `https://ivc6ivtvmg.execute-api.eu-west-3.amazonaws.com/devo/summarize?${params.toString()}`;
+            const url = `${getCurrentApiUrl()}?${params.toString()}``;
             const response = await fetch(url);
             const data = await response.json();
 
