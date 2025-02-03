@@ -228,7 +228,7 @@
             }
 
             if (Date.now() - startTime > 180000) {
-                summaryContent.innerHTML = 'La génération plend plus de temps que prévu. Revenez un peu plus tard.';
+                summaryContent.innerHTML = 'La génération prend plus de temps que prévu. Revenez un peu plus tard.';
                 return;
             }
 
