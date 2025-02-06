@@ -4,8 +4,9 @@
 // @description  Génère et affiche le résumé d'une journée sur vos topics préférés
 // @icon         https://forum.hardware.fr/favicon.ico
 // @namespace    https://mycrub.net
-// @version      0.1
+// @version      0.2
 // @match        https://forum.hardware.fr/forum2.php*
+// @match        https://forum.hardware.fr/hfr/*
 // @grant        GM_addStyle
 // @grant        GM_getValue
 // @grant        GM_setValue
